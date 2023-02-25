@@ -1,0 +1,15 @@
+<%- include("header") %>
+<div class="container">
+    <h1 class="mb-4">New Attendance</h1>
+        <form action="/attendance/new" method="post">
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input required value="<%= data.subject %>" type="text" name="subject" id="subject" class="form-control">
+            </div>
+            <div>
+                <a href="/" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>    
+            </div>
+        </form>
+    </div>
+<%- include("footer") %>

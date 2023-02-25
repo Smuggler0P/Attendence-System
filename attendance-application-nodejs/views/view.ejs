@@ -1,0 +1,85 @@
+<%- include("header") %>
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-body" id="printable">
+            <h3 class="text-center"><%= data.subject %></h3>
+            <h4 class="text-center"><%= data.date %></h4>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Batch</th>
+                </thead>
+                <tbody> 
+                        <% let count = 1 %>                      
+                        <% users.forEach(user => { %>
+                        <tr scope="row">
+                            <td><%= count %></td>
+                            <td><%= user.sanitizedname %></td>
+                            <td><%= user.batch %></td>
+                        </tr>
+                        <% count++ %>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a class="btn btn-info" href="/">Back</a>
+    <button class="btn btn-danger" onclick="printpdf()">Download PDF</button>
+</div>
+<script src="http://localhost/jspdf.umd.min.js"></script>
+<script src="http://localhost/html2canvas.min.js"></script>
+<script>
+    function printpdf() {
+        // var doc = new jspdf.jsPDF();          
+        // var source = window.document.getElementById("printable")[0];
+        // doc.html(
+        //     source,
+        //     { callback: function(doc) {
+		// 	doc.save("output.pdf");
+        //     },
+        //     x: 10,
+        //     y: 10
+        //     });
+
+        // // doc.output("dataurlnewwindow");
+        const { jsPDF } = window.jspdf;
+        var doc = new jsPDF('p', 'pt', 'a4');
+
+        var source = document.getElementById("printable")
+        var srcwidth = source.scrollWidth;
+
+
+        doc.html(source, {
+            html2canvas: {
+                scale: 595.26 / srcwidth, //595.26 is the width of A4 page
+                scrollY: 0
+            },
+            filename: 'attendance',
+            x: 0,
+            y: 0,
+            callback: function () {
+                window.open(doc.output('bloburl'));
+            }
+        });
+
+        // let pdf = new jsPDF('p', 'pt', 'a4');
+        // let srcwidth = document.getElementById('printable').scrollWidth;
+
+        // pdf.html(document.getElementById('printable'), {
+        //     html2canvas: {
+        //         scale: 595.26 / srcwidth, //595.26 is the width of A4 page
+        //         scrollY: 0
+        //     },
+        //     filename: 'jspdf',
+        //     x: 0,
+        //     y: 0,
+        //     callback: function () {
+        //         window.open(pdf.output('bloburl'));
+        //     }
+        // });
+    }
+
+</script>
+<%- include("footer") %>

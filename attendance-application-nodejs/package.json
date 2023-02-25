@@ -1,0 +1,22 @@
+{
+  "name": "attendance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npx nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^2.3.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "jsdom": "^18.1.0",
+    "jspdf": "^2.4.0",
+    "mongoose": "^6.0.12",
+    "passport": "^0.5.0"
+  }
+}

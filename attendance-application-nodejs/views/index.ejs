@@ -1,0 +1,20 @@
+<%- include("header") %>
+<div class="container">
+    <h1 class="mb-4">All Attendance</h1>
+    <a href="/attendance/new" class="btn btn-success">add Attendance</a>
+
+    <% data.forEach(dat => { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title"><%= dat.subject %></h4>
+                <div class="card-subtitle text-muted mb-2"><%= dat.date.toLocaleDateString() %></div>
+                <a class="btn btn-primary" href="attendance/show/<%= dat.id %>">Add</a>
+                <a class="btn btn-info" href="attendance/view/<%= dat.id %>">View</a>
+                <form action="/attendance/delete/<%= dat.id %>" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    <% }) %>
+</div>
+<%- include("footer") %>

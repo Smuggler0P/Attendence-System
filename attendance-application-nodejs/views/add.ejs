@@ -1,0 +1,23 @@
+<%- include("header") %>
+<div class="container">
+    <h1 class="mb-4">Attendance</h1>
+        <form action="/attendance/add" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input required value="<%= attendance.name %>" type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input required value="<%= attendance.subject %>" type="text" name="subject" id="subject" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="batch">Batch</label>
+                <input required value="<%= attendance.batch %>" type="text" name="batch" id="batch" class="form-control">
+            </div>
+            <div>
+                <a href="/" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>    
+            </div>
+        </form>
+    </div>
+<%- include("footer") %>
